@@ -25,20 +25,12 @@ const KanbanBoard = ({ tickets = [], users = [], groupBy, sortBy }) => {
         return grouped;
     };
 
-    const priorityOrder = {
-        4: 'Urgent',
-        3: 'High',
-        2: 'Medium',
-        1: 'Low',
-        0: 'No priority'
-    };
-
     const sortedTickets = (groupedTickets) => {
         Object.keys(groupedTickets).forEach(group => {
             groupedTickets[group].sort((a, b) => {
-                if (groupBy === 'priority' || sortBy === 'priority') {
-                    return priorityOrder[b.priority] - priorityOrder[a.priority];
-                } 
+                if (sortBy === 'priority') {
+                    return b.priority - a.priority;
+                }
                 if (sortBy === 'title') {
                     return a.title.localeCompare(b.title);
                 }
@@ -58,7 +50,7 @@ const KanbanBoard = ({ tickets = [], users = [], groupBy, sortBy }) => {
                     <div key={group} className="kanban-column">
                         <h2 className="kanban-column-header">
                             {groupBy === 'priority'
-                                ? `${priorityOrder[group]} ${displayedTickets[group].length}`
+                                ? `Priority ${group} ${displayedTickets[group].length}`
                                 : `${group} ${displayedTickets[group].length}`
                             }
                         </h2>

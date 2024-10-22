@@ -33,7 +33,6 @@
   gap: 20px;
   padding: 20px;
   background-color: #f4f5f7;
-  /* overflow-x: auto; */
 }
 
 .kanban-column-header {
@@ -61,10 +60,12 @@
   margin-bottom: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: auto;
-  height: 200px;
+  height: 150px; /* Set fixed height */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  display: flex; /* Enable flex layout */
+  flex-direction: column; /* Align children vertically */
+  justify-content: space-between; /* Distribute space evenly */
 }
 
 .ticket-card:hover {
@@ -76,7 +77,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .ticket-id {
@@ -92,6 +92,7 @@
 }
 
 .ticket-body {
+  flex: 1; /* Allow the body to take up available space */
   margin-bottom: 15px;
 }
 
