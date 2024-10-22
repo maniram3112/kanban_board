@@ -1,4 +1,5 @@
 /* App */
+/* App */
 .app-container {
   text-align: center;
   padding: 20px;
@@ -9,39 +10,59 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  gap: 20px;
 }
 
-.controls button {
-  margin: 0 10px;
+/* Dropdown Styling */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #fff;
+  color: #007bff;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  border: 1px solid #007bff;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
 }
 
-.controls button:hover {
-  background-color: #0056b3;
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-radius: 5px;
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu button {
+  background-color: white;
+  color: #333;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
 /* Kanban Board */
 .kanban-board {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  background-color: #f4f5f7;
-}
-
-.kanban-column-header {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 15px;
-  padding: 5px 0;
-  border-bottom: 2px solid #007bff;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.01em;
+  overflow-x: auto;
+  padding: auto;
 }
 
 .kanban-column {
@@ -53,19 +74,92 @@
   margin-bottom: 20px;
 }
 
+.kanban-column-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: #898989;
+  margin-bottom: 15px;
+  padding: 5px 0;
+  border-bottom: 2px solid #007bff;
+  width: 90%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.column-controls button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.column-controls .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.column-controls .dropdown-toggle {
+  background-color: transparent;
+  color: #333;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.column-controls .dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  color: #333;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.column-controls .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.column-controls .dropdown-menu button {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  background-color: white;
+  color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.column-controls .dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+
+
 /* Ticket Card */
 .ticket-card {
   background-color: #ffffff;
   padding: 15px;
+  width: 80%;
   margin-bottom: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 150px; /* Set fixed height */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  display: flex; /* Enable flex layout */
-  flex-direction: column; /* Align children vertically */
-  justify-content: space-between; /* Distribute space evenly */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .ticket-card:hover {
@@ -92,23 +186,27 @@
 }
 
 .ticket-body {
-  flex: 1; /* Allow the body to take up available space */
+  flex: 1;
   margin-bottom: 15px;
 }
 
 .ticket-title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  margin-top: 15px;
   margin-bottom: 10px;
+  width: auto;
+  height: 60px;
   color: #333;
 }
 
 .ticket-type {
   font-size: 12px;
   color: #888;
-  background-color: #e0f0ff;
+  border: #888 1px solid;
   padding: 5px 10px;
   border-radius: 5px;
+  text-align: left;
 }
 
 .ticket-footer {

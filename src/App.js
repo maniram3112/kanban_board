@@ -37,12 +37,24 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="controls">
-        <button onClick={() => setGroupBy('status')}>Group by Status</button>
-        <button onClick={() => setGroupBy('user')}>Group by User</button>
-        <button onClick={() => setGroupBy('priority')}>Group by Priority</button>
-        <button onClick={() => setSortBy('priority')}>Sort by Priority</button>
-        <button onClick={() => setSortBy('title')}>Sort by Title</button>
+        <div className="dropdown">
+          <button className="dropdown-toggle">Group By</button>
+          <div className="dropdown-menu">
+            <button onClick={() => setGroupBy('status')}>Status</button>
+            <button onClick={() => setGroupBy('user')}>User</button>
+            <button onClick={() => setGroupBy('priority')}>Priority</button>
+          </div>
+        </div>
+
+        <div className="dropdown">
+          <button className="dropdown-toggle">Sort By</button>
+          <div className="dropdown-menu">
+            <button onClick={() => setSortBy('priority')}>Priority</button>
+            <button onClick={() => setSortBy('title')}>Title</button>
+          </div>
+        </div>
       </div>
+
       <KanbanBoard tickets={tickets} users={users} groupBy={groupBy} sortBy={sortBy} />
     </div>
   );
